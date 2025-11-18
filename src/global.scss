@@ -35,3 +35,31 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
+
+
+* {
+  font-family: 'Segoe UI', sans-serif;
+}
+
+ion-content {
+  --background: #f2f5ff;
+}
+
+form, ion-list {
+  margin-top: 10px;
+  background: white;
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 0 10px #0001;
+}
+
+h2 {
+  text-align: center;
+  font-weight: bold;
+  color: #2a4ea3;
+}
+
+ion-button {
+  margin-top: 10px;
+  font-weight: bold;
+}
