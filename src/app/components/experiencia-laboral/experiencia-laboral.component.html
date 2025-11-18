@@ -1,3 +1,26 @@
-<p>
-  experiencia-laboral works!
-</p>
+<h2>Experiencia Laboral</h2>
+
+<form [formGroup]="form">
+  <ion-item><ion-input placeholder="Empresa" formControlName="empresa"></ion-input></ion-item>
+
+  <ion-item><ion-input type="number" placeholder="Año Inicio" formControlName="anoInicio"></ion-input></ion-item>
+
+  <ion-item>
+    <ion-checkbox formControlName="actual">Trabajando actualmente</ion-checkbox>
+  </ion-item>
+
+  <ion-item *ngIf="!form.value.actual">
+    <ion-input type="number" placeholder="Año Termino" formControlName="anoTermino"></ion-input>
+  </ion-item>
+
+  <ion-item><ion-input placeholder="Cargo" formControlName="cargo"></ion-input></ion-item>
+
+  <ion-button expand="block" (click)="guardar()">Guardar</ion-button>
+</form>
+
+<ion-list>
+  <ion-item *ngFor="let item of experiencias">
+    {{item.empresa}} - {{item.cargo}}
+    <ion-button color="danger" slot="end" (click)="eliminar(item.id)" fill="clear">🗑</ion-button>
+  </ion-item>
+</ion-list>

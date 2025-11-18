@@ -1,3 +1,22 @@
-<p>
-  certificaciones works!
-</p>
+<h2>Certificaciones</h2>
+
+<form [formGroup]="form">
+  <ion-item><ion-input placeholder="Nombre" formControlName="nombre"></ion-input></ion-item>
+
+  <ion-item><ion-datetime formControlName="fechaObtencion" presentation="date"></ion-datetime></ion-item>
+
+  <ion-item><ion-checkbox formControlName="vence">Vence</ion-checkbox></ion-item>
+
+  <ion-item *ngIf="form.value.vence">
+    <ion-datetime formControlName="fechaVencimiento" presentation="date"></ion-datetime>
+  </ion-item>
+
+  <ion-button expand="block" (click)="guardar()">Guardar</ion-button>
+</form>
+
+<ion-list>
+  <ion-item *ngFor="let item of certificaciones">
+    {{item.nombre}} - {{item.fechaObtencion}}
+    <ion-button slot="end" color="danger" fill="clear" (click)="eliminar(item.id)">🗑</ion-button>
+  </ion-item>
+</ion-list>
