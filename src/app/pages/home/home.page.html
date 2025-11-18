@@ -1,13 +1,23 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>home</ion-title>
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Home</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">home</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+
+  <ion-segment [(ngModel)]="segmentValue">
+    <ion-segment-button value="misdatos">Mis Datos</ion-segment-button>
+    <ion-segment-button value="exp">Experiencia Laboral</ion-segment-button>
+    <ion-segment-button value="cert">Certificaciones</ion-segment-button>
+  </ion-segment>
+
+  <div [ngSwitch]="segmentValue">
+    <app-mis-datos *ngSwitchCase="'misdatos'"></app-mis-datos>
+    <app-experiencia-laboral *ngSwitchCase="'exp'"></app-experiencia-laboral>
+    <app-certificaciones *ngSwitchCase="'cert'"></app-certificaciones>
+  </div>
+
+  <ion-button expand="block" color="danger" (click)="logout()">Cerrar Sesión</ion-button>
+
 </ion-content>

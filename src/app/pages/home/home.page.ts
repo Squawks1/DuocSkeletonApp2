@@ -1,16 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { DbtaskService } from 'src/app/services/dbtask';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
-  styleUrls: ['./home.page.scss'],
   standalone: false
 })
-export class HomePage implements OnInit {
+export class HomePage {
 
-  constructor() { }
+  segmentValue = "misdatos";
 
-  ngOnInit() {
+  constructor(private db: DbtaskService, private router: Router) {}
+
+  async logout(){
+    const user = await this.db.obtenerStorage();
+    await this.db.actualizarEstado(user, 0);
+    await this.db.eliminarStorage();
+    this.router.navigate(['/login']);
   }
-
 }
