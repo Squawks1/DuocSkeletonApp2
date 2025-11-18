@@ -27,13 +27,74 @@ export class DbtaskService {
   }
 
   async createTables() {
-    const sql = `CREATE TABLE IF NOT EXISTS sesion_data(
+
+    // Tabla sesión
+    await this.db.executeSql(`CREATE TABLE IF NOT EXISTS sesion_data(
       user_name TEXT PRIMARY KEY NOT NULL,
       password INTEGER NOT NULL,
       active INTEGER NOT NULL
-    )`;
-    return this.db.executeSql(sql, []);
+    )`, []);
+
+    // Tabla experiencia laboral
+    await this.db.executeSql(`CREATE TABLE IF NOT EXISTS experiencia(
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      empresa TEXT,
+      anoInicio INTEGER,
+      actual INTEGER,
+      anoTermino INTEGER,
+      cargo TEXT
+    )`, []);
+
+    // Tabla certificaciones
+    await this.db.executeSql(`CREATE TABLE IF NOT EXISTS certificaciones(
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      nombre TEXT,
+      fechaObtencion TEXT,
+      vence INTEGER,
+      fechaVencimiento TEXT
+    )`, []);
   }
+
+
+  insertExperiencia(
+    empresa: string,
+    anoInicio: number,
+    actual: number,
+    anoTermino: any,
+    cargo: string
+  ){
+    const sql = `INSERT INTO experiencia (empresa, anoInicio, actual, anoTermino, cargo)
+                VALUES (?, ?, ?, ?, ?)`;
+    return this.db.executeSql(sql, [empresa, anoInicio, actual, anoTermino, cargo]);
+  }
+
+  getExperiencias(){
+    return this.db.executeSql("SELECT * FROM experiencia", []);
+  }
+
+  deleteExperiencia(id: number){
+    return this.db.executeSql("DELETE FROM experiencia WHERE id=?", [id]);
+  }
+
+  insertCertificacion(
+    nombre: string,
+    fechaObtencion: string,
+    vence: number,
+    fechaVencimiento: any
+  ){
+    const sql = `INSERT INTO certificaciones(nombre, fechaObtencion, vence, fechaVencimiento)
+                VALUES (?, ?, ?, ?)`;
+    return this.db.executeSql(sql, [nombre, fechaObtencion, vence, fechaVencimiento]);
+  }
+
+  getCertificaciones(){
+    return this.db.executeSql("SELECT * FROM certificaciones", []);
+  }
+
+  deleteCertificacion(id: number){
+    return this.db.executeSql("DELETE FROM certificaciones WHERE id=?", [id]);
+  }
+
 
   validarLogin(user: string, pass: number) {
     const sql = "SELECT * FROM sesion_data WHERE user_name=? AND password=?";
