@@ -1,13 +1,16 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>mapa</ion-title>
+    <ion-title>Mapa</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">mapa</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+
+  <ion-button expand="block" (click)="obtenerUbicacion()">
+    Obtener ubicación
+  </ion-button>
+
+  <p>Latitud: {{lat}}</p>
+  <p>Longitud: {{lng}}</p>
+
 </ion-content>
