@@ -9,5 +9,9 @@
   ],
   "profile": {
     "name": "typicode"
-  }
+  },
+  "usuarios": [
+    { "id": "1", "nombre": "Tomás", "email": "to.toledom@duocuc.cl" },
+    { "id": "2", "nombre": "Emerson", "email": "em.gonzalezf@duocuc.cl" }
+  ]
 }
