@@ -1,15 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Camera, CameraResultType } from '@capacitor/camera';
 
 @Component({
   selector: 'app-camara',
   templateUrl: './camara.page.html',
   styleUrls: ['./camara.page.scss'],
 })
-export class CamaraPage implements OnInit {
+export class CamaraPage {
 
-  constructor() { }
+  foto: string = '';
 
-  ngOnInit() {
+  async tomarFoto() {
+    const image = await Camera.getPhoto({
+      quality: 80,
+      resultType: CameraResultType.DataUrl
+    });
+
+    this.foto = image.dataUrl!;
   }
-
 }
