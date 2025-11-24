@@ -29,6 +29,6 @@ export class ApiRestService {
 
   // Eliminar (DELETE)
   deleteUser(id: number): Observable<any> {
-    return this.http.delete(this.apiURL + '/usuarios' + id, this.httpOptions);
+    return this.http.delete(this.apiURL + '/usuarios/' + id, this.httpOptions);
   }
 }
