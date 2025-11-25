@@ -4,9 +4,12 @@ import { AuthGuard } from './guards/auth-guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'login', loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule) },
-  { path: 'home', loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule), canActivate: [AuthGuard] },
-  { path: '**', loadChildren: () => import('./pages/not-found/not-found.module').then(m => m.NotFoundPageModule) },
+  { path: 'login', 
+    loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule) 
+  },
+  { path: 'home', 
+    loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule), canActivate: [AuthGuard] 
+  },
   {
     path: 'usuarios',
     loadChildren: () => import('./pages/usuarios/usuarios.module').then( m => m.UsuariosPageModule)
@@ -18,7 +21,10 @@ const routes: Routes = [
   {
     path: 'camara',
     loadChildren: () => import('./pages/camara/camara.module').then( m => m.CamaraPageModule)
-  }
+  },
+  { path: '**', 
+    loadChildren: () => import('./pages/not-found/not-found.module').then(m => m.NotFoundPageModule) 
+  },
 ];
 
 @NgModule({
