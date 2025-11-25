@@ -19,4 +19,17 @@ export class HomePage {
     await this.db.eliminarStorage();
     this.router.navigate(['/login']);
   }
+
+  verUsuarios() {
+    this.router.navigate(['/usuarios']);
+  }
+
+  verMapa() {
+    this.router.navigate(['/mapa']);
+  }
+
+  verCamara() {
+    this.router.navigate(['/camara']);
+  }
+
 }
