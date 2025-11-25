@@ -5,6 +5,7 @@ import { ApiRestService } from '../../services/api-rest';
   selector: 'app-usuarios',
   templateUrl: './usuarios.page.html',
   styleUrls: ['./usuarios.page.scss'],
+  standalone: false
 })
 export class UsuariosPage implements OnInit {
 

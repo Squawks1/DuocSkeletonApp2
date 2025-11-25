@@ -7,6 +7,7 @@ declare var google: any;
   selector: 'app-mapa',
   templateUrl: './mapa.page.html',
   styleUrls: ['./mapa.page.scss'],
+  standalone: false
 })
 export class MapaPage implements AfterViewInit {
 

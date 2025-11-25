@@ -5,6 +5,7 @@ import { Camera, CameraResultType } from '@capacitor/camera';
   selector: 'app-camara',
   templateUrl: './camara.page.html',
   styleUrls: ['./camara.page.scss'],
+  standalone: false
 })
 export class CamaraPage {
 
