@@ -6,7 +6,7 @@ describe('Prueba E2E', () => {
     });
 
     it('Debería permitir ingresar al Home con credenciales válidas', () => {
-        cy.visit('/');
+        cy.visit('/login');
 
         cy.get('#user').type('admin');
         cy.get('#pass').type('1234');
