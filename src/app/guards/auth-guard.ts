@@ -10,6 +10,12 @@ export class AuthGuard implements CanActivate {
   constructor(private db: DbtaskService, private router: Router){}
 
   async canActivate() {
+
+    //Bypass para Cypresss
+    if (typeof window !== 'undefined' && (window as any).Cypress) {
+      return true;
+    }
+
     try {
       const res = await this.db.sesionActiva();
       if (res.rows.length > 0) {
