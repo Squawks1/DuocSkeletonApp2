@@ -7,14 +7,14 @@
 <ion-content class="ion-padding">
 
   <ion-item>
-    <ion-input placeholder="Usuario" [(ngModel)]="user"></ion-input>
+    <ion-input id="user" placeholder="Usuario" [(ngModel)]="user"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-input type="password" placeholder="Contraseña" [(ngModel)]="pass"></ion-input>
+    <ion-input id="pass" type="password" placeholder="Contraseña" [(ngModel)]="pass"></ion-input>
   </ion-item>
 
-  <ion-button expand="block" (click)="login()">Ingresar</ion-button>
-  <ion-button expand="block" fill="outline" (click)="registrar()">Registrarse</ion-button>
+  <ion-button id="btnLogin" expand="block" (click)="login()">Ingresar</ion-button>
+  <ion-button id="btnRegister" expand="block" fill="outline" (click)="registrar()">Registrarse</ion-button>
 
 </ion-content>
